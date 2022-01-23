@@ -9,4 +9,10 @@
     <string name="don_t_have_account_signup">Sign Up</string>
     <string name="user_name">User Name</string>
     <string name="confirm_password">Confirm Password</string>
+    <string name="add">Add</string>
+    <string name="trip_name">Trip Name</string>
+    <string name="start_point">Start Point</string>
+    <string name="end_point">End Point</string>
+    <string name="trip_details">Trip Details</string>
+    <string name="add_note">Add Note</string>
 </resources>

@@ -24,7 +24,6 @@
             android:gravity="center"
             android:text="@string/don_t_have_account_signup"
             android:textAlignment="center"
-
             android:textColor="@color/black"
             android:textSize="25sp" />
 
@@ -34,7 +33,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="#37427C"
+        app:cardBackgroundColor="#B5748A"
         android:layout_below="@id/toolbar"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
@@ -64,6 +63,8 @@
                     android:id="@+id/userInput"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+
+                    android:textColorHint="@color/white"
                     android:background="@android:color/transparent"
                     android:hint="@string/user_name"
                     android:inputType="textEmailAddress" />
