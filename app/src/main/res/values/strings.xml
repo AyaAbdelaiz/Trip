@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">TripReminder</string>
+    <string name="nav_open">nav</string>
+    <string name="nav_close">nav2</string>
+    <string name="add">add</string>
+    <string name="trip_details">Details</string>
+    <string name="notes">Nots</string>
+    <string name="end_point">EndPoint</string>
+    <string name="start_point">StartPoint</string>
+    <string name="trip_name">TripName</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="edit">Edit</string>
+    <string name="note">Note</string>
+    <string name="Start">START</string>
+    <string name="timeLbl">Time</string>
+    <string name="toLbl">To</string>
+    <string name="fromLbl">From</string>
+    <string name="typeLbl">Type</string>
+    <string name="startBtn">Start</string>
+    <string name="AddNote">Add</string>
+    <string name="save">Save</string>
+</resources>

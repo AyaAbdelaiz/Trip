@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    app:startDestination="@id/history">
+
+    <fragment
+        android:id="@+id/history"
+        android:name="com.example.newmenu.HistoryFragment"
+        android:label="history"
+        tools:layout="@layout/fragment_history" />
+    <fragment
+        android:id="@+id/Sync"
+        android:name="com.example.newmenu.SyncFragment"
+        android:label="sync"
+        tools:layout="@layout/fragment_sync" />
+    <fragment
+        android:id="@+id/Up_coming"
+        android:name="com.example.newmenu.UpcomingFragment"
+        android:label="upcoming"
+        tools:layout="@layout/fragment_upcoming" />
+</navigation>
