@@ -19,30 +19,130 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.google.android.gms.common.api.Status;
+import com.google.android.libraries.places.api.Places;
+import com.google.android.libraries.places.api.model.Place;
+import com.google.android.libraries.places.api.model.TypeFilter;
+import com.google.android.libraries.places.api.net.FetchPhotoRequest;
+import com.google.android.libraries.places.api.net.PlacesClient;
+import com.google.android.libraries.places.widget.AutocompleteSupportFragment;
+import com.google.android.libraries.places.widget.listener.PlaceSelectionListener;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 public class AddTrip extends AppCompatActivity {
 
     TextView date_picker_actions, time_picker_actions;
     Toolbar toolbar;
-    TextInputLayout edtTripNote,edtTripName;
+    TextInputLayout edtTripNote, edtTripName;
+    TextInputLayout edtStartPoint1;
     Button addTrip;
-    String note,name_of_trip;
+    String note, name_of_trip;
     FirebaseInstance instance;
+
+    int TripMonth = 1, TripDay = 0, TripYear = 0;
+
+
+    String placesApiToken = "AIzaSyAzyToZ95jgePDTBDOZc5wNqXeihsJ31eg";
+
+    PlacesClient placesClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_trip);
         toolbar = findViewById(R.id.trip_toolbar);
+        edtStartPoint1 = findViewById(R.id.edtStartPoint1);
         setSupportActionBar(toolbar);
-        edtTripNote=findViewById(R.id.edtTripNote);
-        edtTripName=findViewById(R.id.edtTripName);
+
+        edtTripNote = findViewById(R.id.edtTripNote);
+        edtTripName = findViewById(R.id.edtTripName);
+
+        String apiKey = getString(R.string.api_key);
+        if (!Places.isInitialized()) {
+            Places.initialize(getApplicationContext(), apiKey);
+        }
+        placesClient = Places.createClient(this);
+        edtStartPoint1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AutocompleteSupportFragment autocompleteFragment = (AutocompleteSupportFragment)
+                        getSupportFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
+                autocompleteFragment.setTypeFilter(TypeFilter.CITIES);
+                autocompleteFragment.setPlaceFields(Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.PHOTO_METADATAS));
+                autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
+                    @Override
+                    public void onPlaceSelected(@NonNull Place place) {
+               /*
+                Toast.makeText(getApplicationContext(), place.getName(), Toast.LENGTH_SHORT).show();
+
+                FetchPhotoRequest photoRequest = FetchPhotoRequest.builder(Objects.requireNonNull(place.getPhotoMetadatas()).get(0))
+                        .build();
+                placesClient.fetchPhoto(photoRequest).addOnSuccessListener(
+                        new OnSuccessListener<FetchPhotoResponse>() {
+                            @Override
+                            public void onSuccess(FetchPhotoResponse response) {
+                                Bitmap bitmap = response.getBitmap();
+                                ((ImageView)findViewById(R.id.img)).setImageBitmap(bitmap);
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception exception) {
+                                exception.printStackTrace();
+                            }
+                        });*/
+                    }
+
+                    @Override
+                    public void onError(@NonNull Status status) {
+                        Toast.makeText(getApplicationContext(), status.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+            }
+        });
+
+        AutocompleteSupportFragment autocompleteFragment = (AutocompleteSupportFragment)
+                getSupportFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
+        autocompleteFragment.setTypeFilter(TypeFilter.CITIES);
+        autocompleteFragment.setPlaceFields(Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.PHOTO_METADATAS));
+        autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
+            @Override
+            public void onPlaceSelected(@NonNull Place place) {
+               /*
+                Toast.makeText(getApplicationContext(), place.getName(), Toast.LENGTH_SHORT).show();
+
+                FetchPhotoRequest photoRequest = FetchPhotoRequest.builder(Objects.requireNonNull(place.getPhotoMetadatas()).get(0))
+                        .build();
+                placesClient.fetchPhoto(photoRequest).addOnSuccessListener(
+                        new OnSuccessListener<FetchPhotoResponse>() {
+                            @Override
+                            public void onSuccess(FetchPhotoResponse response) {
+                                Bitmap bitmap = response.getBitmap();
+                                ((ImageView)findViewById(R.id.img)).setImageBitmap(bitmap);
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception exception) {
+                                exception.printStackTrace();
+                            }
+                        });*/
+            }
+
+            @Override
+            public void onError(@NonNull Status status) {
+                Toast.makeText(getApplicationContext(), status.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
         // getActionBar().setTitle("Add trip");
@@ -72,10 +172,10 @@ public class AddTrip extends AppCompatActivity {
         addTrip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                name_of_trip=edtTripName.getEditText().getText().toString();
-                note=edtTripNote.getEditText().getText().toString();
-                uploadTripDetails(note,name_of_trip);
-                Toast.makeText(AddTrip.this, ""+note, Toast.LENGTH_SHORT).show();
+                name_of_trip = edtTripName.getEditText().getText().toString();
+                note = edtTripNote.getEditText().getText().toString();
+                uploadTripDetails(note, name_of_trip);
+                Toast.makeText(AddTrip.this, "" + note, Toast.LENGTH_SHORT).show();
 
 
             }
@@ -83,18 +183,28 @@ public class AddTrip extends AppCompatActivity {
 
     }
 
-    private void uploadTripDetails(String note,String name_of_trip) {
+    private void uploadTripDetails(String note, String name_of_trip) {
 
         try {
             DatabaseReference database = instance.getDatabaseReference();
             String id = instance.getUserId();
-            database.child(id).child("name").setValue(name_of_trip);
-            database.child(id).child("startPointTrip").setValue("cairo");
-            database.child(id).child("endPointTrip").setValue("giza");
-            database.child(id).child("date").setValue(date_picker_actions.getText());
-            database.child(id).child("time").setValue(time_picker_actions.getText());
-            database.child(id).child("notes").setValue(note);
+            DatabaseReference trip = database.child("usersTrip").child(id).push();
+            DatabaseReference reference = trip;
 
+            Map<String, Object> map = new HashMap<>();
+            map.put("nameId1", "John");
+            map.put("nameId2", "Tim");
+            map.put("nameId3", "Sam");
+            reference.setValue(map);
+
+
+          /*  reference.child("name").setValue(name_of_trip);
+            reference.child("startPointTrip").setValue("cairo");
+            reference.child("endPointTrip").setValue("giza");
+            reference.child("date").setValue(date_picker_actions.getText());
+            reference.child("time").setValue(time_picker_actions.getText());
+            reference.child("notes").setValue(note);
+*/
         } catch (Exception ex) {
             Log.d("ayaaa", "ert" + ex.getMessage());
 
@@ -103,19 +213,28 @@ public class AddTrip extends AppCompatActivity {
 
     private void dateCalendar() {
         Calendar calendar = Calendar.getInstance();
-        int day = calendar.get(Calendar.DAY_OF_MONTH);
-        int month = calendar.get(Calendar.MONTH);
-        int year = calendar.get(Calendar.YEAR);
+        if (TripMonth == 1 || TripDay == 0 || TripYear == 0) {
+            TripDay = calendar.get(Calendar.DAY_OF_MONTH);
+            TripMonth = calendar.get(Calendar.MONTH);
+            TripYear = calendar.get(Calendar.YEAR);
+        }
 
         DatePickerDialog datePickerDialog = new DatePickerDialog(AddTrip.this,
                 AlertDialog.THEME_DEVICE_DEFAULT_LIGHT,
                 new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-                        i = i + 1;
-                        date_picker_actions.setText(i + "/" + i1 + "/" + i2);
+                        TripMonth = datePicker.getMonth();
+                        if (TripMonth >= 0)
+                            TripMonth = TripMonth + 1;
+                        TripDay = datePicker.getDayOfMonth();
+                        TripYear = datePicker.getYear();
+                        date_picker_actions.setText(TripYear + "/" + TripMonth + "/" + TripDay);
                     }
-                }, year, month, day);
+                }, TripYear, TripMonth, TripDay);
+
+
+
 
       /*  mDateListener = (datePicker, year1, month1, day1) -> {
 
