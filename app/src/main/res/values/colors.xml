@@ -8,4 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="ui_color">#8A5A6A</color>
+
+    <color name="mainColor">#EBB30C</color>
+    <color name="btnnote">#F0BC1F</color>
 </resources>

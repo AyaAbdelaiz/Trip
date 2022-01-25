@@ -16,4 +16,11 @@
     <string name="trip_details">Trip Details</string>
     <string name="add_note">Add Note</string>
     <string name="api_key">AIzaSyDyoW1ZsexD4TAGKPrJDftbt_ESfZ7CZKM</string>
+    <string name="remove">remove</string>
+    <string name="note2">notes</string>
+    <string name="typeLbl">type</string>
+    <string name="fromLbl">from</string>
+    <string name="toLbl">to</string>
+    <string name="timeLbl">time</string>
+    <string name="startBtn">start</string>
 </resources>
