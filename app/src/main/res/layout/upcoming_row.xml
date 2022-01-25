@@ -137,7 +137,6 @@
 
             <Button
                 android:id="@+id/menuBtn"
-
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginEnd="16dp"
@@ -155,15 +154,13 @@
                 android:layout_marginStart="80dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/submit_btn"
-                android:backgroundTint="@color/btnnote"
+                android:backgroundTint="#CD8110"
                 android:freezesText="false"
                 android:text="@string/startBtn"
                 android:textAlignment="center"
                 android:textColor="#FFEB3B"
                 android:textColorHighlight="#F6C530"
                 android:textColorHint="#DFAC14"
-                android:textColorLink="#F6BC0E"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -176,6 +173,7 @@
                 android:layout_height="48dp"
                 android:layout_marginStart="80dp"
                 android:background="@drawable/ic_baseline_note"
+                android:backgroundTint="@color/note2"
                 app:layout_constraintBottom_toBottomOf="@+id/startBtn"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
