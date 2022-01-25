@@ -15,6 +15,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -41,12 +43,13 @@ public class AddTrip extends AppCompatActivity {
 
     TextView date_picker_actions, time_picker_actions;
     Toolbar toolbar;
-    TextInputLayout edtTripNote, edtTripName;
-    TextInputLayout edtStartPoint1;
+    TextInputLayout edtTripNote, edtTripName, edtStartPoint1, edEndPoint;
+    // TextInputLayout edtStartPoint1;
     Button addTrip;
     String note, name_of_trip;
     FirebaseInstance instance;
-
+    RadioGroup radioGroup;
+    String tripType = "";
     int TripMonth = 1, TripDay = 0, TripYear = 0;
 
 
@@ -60,15 +63,27 @@ public class AddTrip extends AppCompatActivity {
         setContentView(R.layout.activity_add_trip);
         toolbar = findViewById(R.id.trip_toolbar);
         edtStartPoint1 = findViewById(R.id.edtStartPoint1);
+        edEndPoint = findViewById(R.id.edtEndPoint1);
         setSupportActionBar(toolbar);
 
         edtTripNote = findViewById(R.id.edtTripNote);
         edtTripName = findViewById(R.id.edtTripName);
 
+        radioGroup = (RadioGroup) findViewById(R.id.rdGroup);
+
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                RadioButton radioButton = (RadioButton) findViewById(i);
+                tripType = radioButton.getText().toString();
+            }
+        });
+
         String apiKey = getString(R.string.api_key);
         if (!Places.isInitialized()) {
             Places.initialize(getApplicationContext(), apiKey);
         }
+
         placesClient = Places.createClient(this);
         edtStartPoint1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,40 +125,6 @@ public class AddTrip extends AppCompatActivity {
             }
         });
 
-        AutocompleteSupportFragment autocompleteFragment = (AutocompleteSupportFragment)
-                getSupportFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
-        autocompleteFragment.setTypeFilter(TypeFilter.CITIES);
-        autocompleteFragment.setPlaceFields(Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.PHOTO_METADATAS));
-        autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
-            @Override
-            public void onPlaceSelected(@NonNull Place place) {
-               /*
-                Toast.makeText(getApplicationContext(), place.getName(), Toast.LENGTH_SHORT).show();
-
-                FetchPhotoRequest photoRequest = FetchPhotoRequest.builder(Objects.requireNonNull(place.getPhotoMetadatas()).get(0))
-                        .build();
-                placesClient.fetchPhoto(photoRequest).addOnSuccessListener(
-                        new OnSuccessListener<FetchPhotoResponse>() {
-                            @Override
-                            public void onSuccess(FetchPhotoResponse response) {
-                                Bitmap bitmap = response.getBitmap();
-                                ((ImageView)findViewById(R.id.img)).setImageBitmap(bitmap);
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception exception) {
-                                exception.printStackTrace();
-                            }
-                        });*/
-            }
-
-            @Override
-            public void onError(@NonNull Status status) {
-                Toast.makeText(getApplicationContext(), status.toString(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
 
         // getActionBar().setTitle("Add trip");
 
@@ -175,7 +156,6 @@ public class AddTrip extends AppCompatActivity {
                 name_of_trip = edtTripName.getEditText().getText().toString();
                 note = edtTripNote.getEditText().getText().toString();
                 uploadTripDetails(note, name_of_trip);
-                Toast.makeText(AddTrip.this, "" + note, Toast.LENGTH_SHORT).show();
 
 
             }
@@ -183,19 +163,24 @@ public class AddTrip extends AppCompatActivity {
 
     }
 
+    // اضافه تفاصيل الرحله للفايربيز
     private void uploadTripDetails(String note, String name_of_trip) {
 
         try {
             DatabaseReference database = instance.getDatabaseReference();
             String id = instance.getUserId();
-            DatabaseReference trip = database.child("usersTrip").child(id).push();
-            DatabaseReference reference = trip;
 
+            // hash map
             Map<String, Object> map = new HashMap<>();
-            map.put("nameId1", "John");
-            map.put("nameId2", "Tim");
-            map.put("nameId3", "Sam");
-            reference.setValue(map);
+            map.put("Name", edtTripName.getEditText().getText().toString());
+            map.put("startPoint", edtStartPoint1.getEditText().getText().toString());
+            map.put("endPoint", edEndPoint.getEditText().getText().toString());
+            map.put("time", date_picker_actions.getText().toString());
+            map.put("date", time_picker_actions.getText().toString());
+            map.put("tripType",tripType);
+
+            FirebaseDatabase.getInstance().getReference().child("usersTrip").push()
+                    .setValue(map);
 
 
           /*  reference.child("name").setValue(name_of_trip);

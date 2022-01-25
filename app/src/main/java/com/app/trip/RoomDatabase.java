@@ -5,7 +5,7 @@ import android.content.Context;
 import androidx.room.Database;
 import androidx.room.Room;
 
-@Database(entities = {Trip.class}, version = 1)
+//@Database(entities = {Trip.class}, version = 1)
 public class RoomDatabase {
 
     /*private Context mCtx;

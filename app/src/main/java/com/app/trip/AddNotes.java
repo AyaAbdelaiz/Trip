@@ -16,7 +16,7 @@ public class AddNotes extends AppCompatActivity {
     public static String TAG = "main";
     List<String> notes;
     RecyclerView recyclerView;
-    NotesAdapter myAdapter;
+    TripsAdapter myAdapter;
     Button btn;
     TextView txt;
     Button btnSave;
@@ -36,7 +36,7 @@ public class AddNotes extends AppCompatActivity {
         LinearLayoutManager LayoutManager=new LinearLayoutManager(this);
         LayoutManager.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(LayoutManager);
-        myAdapter=new NotesAdapter(AddNotes.this,notes);
+        //myAdapter=new TripsAdapter(AddNotes.this,notes);
         recyclerView.setAdapter(myAdapter);
 
         btn.setOnClickListener(new View.OnClickListener() {

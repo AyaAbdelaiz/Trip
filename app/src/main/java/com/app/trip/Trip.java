@@ -4,16 +4,31 @@ import androidx.room.Dao;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity
+// Trip Model  values Data
 public class Trip {
 
-
-    @PrimaryKey(autoGenerate = true)
     int id;
     String startPoint;
     String endPoint;
     String time;
     String date;
+    String tripType;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getTripType() {
+        return tripType;
+    }
+
+    public void setTripType(String tripType) {
+        this.tripType = tripType;
+    }
 
     public String getStartPoint() {
         return startPoint;
