@@ -9,19 +9,20 @@ import androidx.room.PrimaryKey;
 public class Trip {
 
     int id;
+    String tripName;
     String startPoint;
     String endPoint;
     String time;
     String date;
     String tripType;
 
-    public Trip(int id, String startPoint, String endPoint, String time, String date, String tripType) {
-        this.id = id;
-        this.startPoint = startPoint;
-        this.endPoint = endPoint;
-        this.time = time;
-        this.date = date;
-        this.tripType = tripType;
+
+    public String getTripName() {
+        return tripName;
+    }
+
+    public void setTripName(String tripName) {
+        this.tripName = tripName;
     }
 
     public int getId() {

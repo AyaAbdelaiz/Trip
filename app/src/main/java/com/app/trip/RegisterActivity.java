@@ -53,6 +53,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 createUser();
+                startActivity(new Intent(RegisterActivity.this,MainActivity.class));
             }
         });
     }
@@ -93,7 +94,7 @@ public class RegisterActivity extends AppCompatActivity {
                             Toast.makeText(RegisterActivity.this, "Sign Up Succefully", Toast.LENGTH_SHORT).show();
                         } else {
                           //  Toast.makeText(RegisterActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                            Log.d("aya", "onComplete: "+task.getException().getMessage());
+                            //Log.d("aya", "onComplete: "+task.getException().getMessage());
                         }
                     }
                 });

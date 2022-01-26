@@ -47,6 +47,7 @@ public class LoginActivity extends AppCompatActivity {
         btnSignin = findViewById(R.id.button3);
         tinputEmail = findViewById(R.id.emaillayoutSignIn);
         tinputPassword = findViewById(R.id.passLayoutSignIn);
+        signInButton =findViewById(R.id.googleSignIn);
         auth = FirebaseAuth.getInstance();
 
         btnSignup.setOnClickListener(new View.OnClickListener() {
@@ -60,9 +61,11 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 checkEd();
-                startActivity(new Intent(LoginActivity.this,MainActivity.class));
+
             }
         });
+        mGoogleSignInClient=GoogleSignIn.getClient(this,gso);
+
     }
 
 
@@ -81,7 +84,7 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
-
+                        startActivity(new Intent(LoginActivity.this,MainActivity.class));
                         Toast.makeText(LoginActivity.this, "Sign In Succefully", Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -98,13 +101,6 @@ public class LoginActivity extends AppCompatActivity {
             .requestEmail()
             .build();
 
-   /* mGoogleSignInClient =GoogleSignIn.getClient(
-
-    requireContext(),gso);
-
-
-    signInButton =view.findViewById(R.id.googleSignIn);
-*/
 
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
@@ -116,12 +112,13 @@ public class LoginActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == RC_SIGN_IN) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            // signInAccountInfo(task);
+            signInAccountInfo(task);
         }
     }
-}
 
-   /* private void signInAccountInfo(Task<GoogleSignInAccount> task) {
+
+
+   private void signInAccountInfo(Task<GoogleSignInAccount> task) {
         try {
 
             GoogleSignInAccount account = task.getResult(ApiException.class);
@@ -130,10 +127,11 @@ public class LoginActivity extends AppCompatActivity {
             String userName = account.getDisplayName();
             String email = account.getEmail();
 
-            Toast.makeText(requireContext(), email, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, email, Toast.LENGTH_SHORT).show();
 
         } catch (Exception exception) {
-            Toast.makeText(requireContext(), exception.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, exception.getMessage(), Toast.LENGTH_SHORT).show();
 
         }
-    }*/
+    }
+}

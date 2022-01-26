@@ -36,6 +36,7 @@ public class TripsAdapter extends FirebaseRecyclerAdapter<Trip, TripsAdapter.Vie
     @Override
     public void  onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull Trip model){
         //Trip trip = mData.get(position);
+        holder.tripName.setText(model.getTripName());
         holder.tripStartPoint.setText(model.getStartPoint());
         holder.tripEndPoint.setText(model.getStartPoint());
         holder.time.setText(model.getTime());
@@ -52,10 +53,11 @@ public class TripsAdapter extends FirebaseRecyclerAdapter<Trip, TripsAdapter.Vie
 
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView tripStartPoint, tripEndPoint, time, date,tripType;
+        TextView tripStartPoint, tripEndPoint, time, date,tripType,tripName;
 
         ViewHolder(View itemView) {
             super(itemView);
+            tripName=itemView.findViewById(R.id.tripName);
             tripStartPoint = itemView.findViewById(R.id.tripStartPoint);
             tripEndPoint = itemView.findViewById(R.id.tripEndPoint);
             time = itemView.findViewById(R.id.time);

@@ -44,7 +44,7 @@ public class AddTrip extends AppCompatActivity {
     TextView date_picker_actions, time_picker_actions;
     Toolbar toolbar;
     TextInputLayout edtTripNote, edtTripName, edtStartPoint1, edEndPoint;
-    // TextInputLayout edtStartPoint1;
+
     Button addTrip;
     String note, name_of_trip;
     FirebaseInstance instance;
@@ -65,11 +65,14 @@ public class AddTrip extends AppCompatActivity {
         edtStartPoint1 = findViewById(R.id.edtStartPoint1);
         edEndPoint = findViewById(R.id.edtEndPoint1);
         setSupportActionBar(toolbar);
-
         edtTripNote = findViewById(R.id.edtTripNote);
         edtTripName = findViewById(R.id.edtTripName);
-
         radioGroup = (RadioGroup) findViewById(R.id.rdGroup);
+
+        instance = new FirebaseInstance();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+
+
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -128,7 +131,6 @@ public class AddTrip extends AppCompatActivity {
 
         // getActionBar().setTitle("Add trip");
 
-        instance = new FirebaseInstance();
 
         date_picker_actions = findViewById(R.id.date_picker_actions);
         time_picker_actions = findViewById(R.id.time_picker_actions);
@@ -147,14 +149,14 @@ public class AddTrip extends AppCompatActivity {
             }
         });
 
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+
 
 
         addTrip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                name_of_trip = edtTripName.getEditText().getText().toString();
-                note = edtTripNote.getEditText().getText().toString();
+                //name_of_trip = edtTripName.getEditText().getText().toString();
+               // note = edtTripNote.getEditText().getText().toString();
                 uploadTripDetails(note, name_of_trip);
 
 
