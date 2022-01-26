@@ -34,7 +34,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/time"
-                app:layout_constraintTop_toBottomOf="@+id/titleLbl" />
+                app:layout_constraintTop_toBottomOf="@+id/nameLable" />
 
             <TextView
                 android:id="@+id/typeLbl"
@@ -67,7 +67,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/typeLbl" />
 
             <TextView
-                android:id="@+id/titleLbl"
+                android:id="@+id/nameLable"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -84,7 +84,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/timeLbl"
                 app:layout_constraintBottom_toBottomOf="@+id/timeLbl"
-                app:layout_constraintStart_toStartOf="@+id/titleLbl"
+                app:layout_constraintStart_toStartOf="@+id/nameLable"
                 app:layout_constraintTop_toTopOf="@+id/timeLbl" />
 
             <TextView
@@ -147,7 +147,7 @@
                 app:layout_constraintBottom_toBottomOf="@+id/startBtn"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.986"
-                app:layout_constraintStart_toEndOf="@+id/titleLbl"
+                app:layout_constraintStart_toEndOf="@+id/nameLable"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0"
                 tools:ignore="SpeakableTextPresentCheck" />
