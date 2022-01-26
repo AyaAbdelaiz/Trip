@@ -5,6 +5,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 // Trip Model  values Data
+//Bogo
 public class Trip {
 
     int id;
@@ -13,6 +14,15 @@ public class Trip {
     String time;
     String date;
     String tripType;
+
+    public Trip(int id, String startPoint, String endPoint, String time, String date, String tripType) {
+        this.id = id;
+        this.startPoint = startPoint;
+        this.endPoint = endPoint;
+        this.time = time;
+        this.date = date;
+        this.tripType = tripType;
+    }
 
     public int getId() {
         return id;

@@ -17,14 +17,17 @@
         <TextView
             android:id="@+id/tripStartPoint"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:text="Hello World!"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:textSize="25sp" />
 
         <TextView
             android:id="@+id/tripEndPoint"
             android:layout_width="match_parent"
+            android:layout_marginBottom="10dp"
             android:layout_height="wrap_content"
+            android:textSize="25sp"
             android:layout_below="@+id/tripStartPoint"
 
             android:text="TextView"
@@ -34,6 +37,8 @@
             android:id="@+id/time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:layout_marginBottom="10dp"
             android:layout_below="@+id/tripEndPoint"
             android:text="TextView"
             android:textColor="@color/white" />
@@ -41,7 +46,8 @@
         <TextView
             android:id="@+id/date"
             android:layout_width="match_parent"
-
+            android:textSize="25sp"
+            android:layout_marginBottom="10dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/time"
             android:text="TextView"
@@ -51,7 +57,9 @@
             android:id="@+id/tripType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="25sp"
             android:layout_below="@+id/date"
+            android:layout_marginBottom="10dp"
             android:text="@string/trip_details"
             android:textColor="@color/white" />
 
