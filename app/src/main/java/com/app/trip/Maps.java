@@ -29,6 +29,9 @@ public class Maps extends Fragment {
          * install it inside the SupportMapFragment. This method will only be triggered once the
          * user has installed Google Play services and returned to the app.
          */
+        //dddddddddddddddddddddddddddddd
+
+        /*ay haga test git*/
         @Override
         public void onMapReady(GoogleMap googleMap) {
             LatLng sydney = new LatLng(-34, 151);
@@ -36,6 +39,11 @@ public class Maps extends Fragment {
             googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
         }
     };
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
 
     @Nullable
     @Override
