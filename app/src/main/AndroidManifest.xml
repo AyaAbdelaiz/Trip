@@ -10,8 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Trip">
         <activity
-            android:name=".MainActivity"
+            android:name=".GoogleSearchActivity"
             android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Trip" />
         <activity
             android:name=".LoginActivity"
             android:exported="false" />

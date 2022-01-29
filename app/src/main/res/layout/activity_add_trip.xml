@@ -47,6 +47,9 @@
             android:orientation="vertical"
             android:padding="20dp">
 
+
+
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/edtTripName"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -65,28 +68,63 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
+            <TextView
                 android:id="@+id/edtStartPoint1"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:boxBackgroundColor="@color/ui_color"
-                app:boxBackgroundMode="filled"
-                app:errorEnabled="true"
-                app:startIconDrawable="@drawable/ic_location">
+                android:layout_height="50dp"
+                android:background="@color/ui_color"
+                android:layout_marginBottom="15dp"
+                android:hint="@string/start_point"
+                android:gravity="center|start"
+                android:drawableStart="@drawable/ic_location"
+                android:drawablePadding="20dp"
+                android:paddingStart="13dp"
+                android:inputType="textPersonName"
+                android:textColor="#000000"
+                android:textColorHint="@color/black"/>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edtStartPoint"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/start_point"
-                    android:inputType="textPersonName"
-                    android:textColor="#000000"
-                    android:textColorHint="@color/black" />
+            <TextView
+                android:id="@+id/edtEndPoint1"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/ui_color"
+                android:layout_marginBottom="15dp"
+                android:hint="@string/end_point"
+                android:gravity="center|start"
+                android:drawableStart="@drawable/ic_location"
+                android:drawablePadding="20dp"
+                android:paddingStart="13dp"
+                android:inputType="textPersonName"
+                android:textColor="#000000"
+                android:textColorHint="@color/black"/>
 
-            </com.google.android.material.textfield.TextInputLayout>
 
 
+            <!--
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/edtStartPoint1"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:boxBackgroundColor="@color/ui_color"
+                            app:boxBackgroundMode="filled"
+                            app:errorEnabled="true"
+                            app:startIconDrawable="@drawable/ic_location">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/edtStartPoint"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/start_point"
+                                android:inputType="textPersonName"
+                                android:textColor="#000000"
+                                android:textColorHint="@color/black" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+            -->
+
+
+<!--
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/edtEndPoint1"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -108,6 +146,7 @@
 
 
             </com.google.android.material.textfield.TextInputLayout>
+-->
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/edtTripNote"
@@ -128,7 +167,6 @@
                     android:textColor="@color/black" />
 
             </com.google.android.material.textfield.TextInputLayout>
-
 
 
             <RadioGroup
@@ -203,19 +241,24 @@
                 android:textColor="@color/ui_color"
                 android:textSize="18sp"
                 android:textStyle="bold" />
+
+
         </LinearLayout>
+
+
     </ScrollView>
+
     <LinearLayout
-        android:id="@+id/ll1"
+        android:id="@+id/search_layut"
         android:layout_width="match_parent"
-        android:visibility="gone"
-        android:layout_height="match_parent"
-        android:background="@android:color/white">
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+
         <fragment
             android:id="@+id/place_autocomplete_fragment"
             android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

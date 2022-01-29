@@ -22,8 +22,11 @@
         <entry key="..\:/Users/user/AndroidStudioProjects/Trip/app/src/main/res/menu/trip_details.xml" value="0.25" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Trip/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.14322916666666666" />
         <entry key="..\:/Users/user/Trip/app/src/main/res/drawable-v24/add.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/user/Trip/app/src/main/res/drawable-v24/ic_location.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/user/Trip/app/src/main/res/drawable/ic_location.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/user/Trip/app/src/main/res/layout/activity_add_notes.xml" value="0.25" />
         <entry key="..\:/Users/user/Trip/app/src/main/res/layout/activity_add_trip.xml" value="0.25" />
+        <entry key="..\:/Users/user/Trip/app/src/main/res/layout/activity_google_search.xml" value="0.25" />
         <entry key="..\:/Users/user/Trip/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/Users/user/Trip/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/user/Trip/app/src/main/res/layout/activity_main2.xml" value="0.25" />
@@ -37,7 +40,7 @@
         <entry key="..\:/Users/user/Trip/app/src/main/res/layout/history_row.xml" value="0.25" />
         <entry key="..\:/Users/user/Trip/app/src/main/res/layout/note_row.xml" value="0.25" />
         <entry key="..\:/Users/user/Trip/app/src/main/res/layout/rehla.xml" value="0.25" />
-        <entry key="..\:/Users/user/Trip/app/src/main/res/layout/trip_holder_item.xml" value="0.4" />
+        <entry key="..\:/Users/user/Trip/app/src/main/res/layout/trip_holder_item.xml" value="0.536" />
         <entry key="..\:/Users/user/Trip/app/src/main/res/layout/upcoming_row.xml" value="0.25" />
       </map>
     </option>

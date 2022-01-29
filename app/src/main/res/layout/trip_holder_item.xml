@@ -2,74 +2,153 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/Theme.Trip"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="20dp"
-    app:cardBackgroundColor="@color/ui_color">
+    app:cardBackgroundColor="@color/white"
+    style="@style/Theme.Trip"
+    android:layout_margin="10dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="2dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="10dp"
-        tools:context=".MainActivity">
+        android:paddingTop="10dp">
 
-        <TextView
-            android:id="@+id/tripStartPoint"
-            android:layout_width="match_parent"
-            android:layout_below="@+id/tripName"
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="50dp"
             android:layout_height="50dp"
-            android:text="Hello World!"
-            android:textColor="@color/white"
-            android:textSize="25sp" />
-
-        <TextView
-            android:id="@+id/tripEndPoint"
-            android:layout_width="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
-            android:layout_height="wrap_content"
-            android:textSize="25sp"
-            android:layout_below="@+id/tripStartPoint"
-
-            android:text="TextView"
-            android:textColor="@color/white" />
+            app:srcCompat="@drawable/ic_map_logo" />
 
         <TextView
-            android:id="@+id/time"
-            android:layout_width="match_parent"
+            android:id="@+id/trip_name"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="25sp"
-            android:layout_marginBottom="5dp"
-            android:layout_below="@+id/tripEndPoint"
-            android:text="TextView"
-            android:textColor="@color/white" />
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="11dp"
+            android:layout_marginBottom="8dp"
+            android:layout_toEndOf="@+id/imageView4"
+            android:text="this is trip name"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/date"
-            android:layout_width="match_parent"
-            android:textSize="25sp"
-            android:layout_marginBottom="5dp"
+            android:id="@+id/trip_date"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/time"
-            android:text="TextView"
-            android:textColor="@color/white" />
+            android:layout_below="@+id/trip_name"
+            android:layout_toEndOf="@+id/imageView4"
+            android:text="20/5/2020"
+            android:textSize="12sp" />
+
 
         <TextView
-            android:id="@+id/tripType"
-            android:layout_width="match_parent"
+            android:id="@+id/trip_time"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="25sp"
-            android:layout_below="@+id/date"
-            android:layout_marginBottom="5dp"
-            android:text="@string/trip_details"
-            android:textColor="@color/white" />
+            android:layout_below="@+id/trip_name"
+            android:layout_marginStart="8dp"
+            android:layout_toEndOf="@+id/trip_date"
+            android:text="5:05"
+            android:textSize="12sp" />
 
         <TextView
-            android:id="@+id/tripName"
-            android:layout_width="match_parent"
+            android:id="@+id/trip_start1"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:textSize="25sp" />
+            android:layout_below="@id/imageView4"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:drawableStart="@drawable/ic_location"
+            android:drawablePadding="5dp"
+            android:text="start of : "
+            android:textColor="@color/black"
+
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/trip_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_below="@id/trip_start1"
+            android:layout_alignParentStart="true"
+            android:layout_margin="10dp"
+            android:text="lkjghirjtuhinrtiuhnrtiuhniutrhnuignhiunfgunrtuhnuitngiufhnufihnuifghnuifghnuifghnuifghuifghiufgh" />
+
+
+        <TextView
+            android:id="@+id/trip_end1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/trip_start"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="10dp"
+            android:drawableStart="@drawable/ic_location"
+            android:drawablePadding="5dp"
+            android:text="end of : "
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/trip_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/trip_end1"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="lkjghirjtuhinrtiuhnrtiuhniutrhnuignhiunfgunrtuhnuitngiufhnufihnuifghnuifghnuifghnuifghuifghiufgh" />
+
+
+        <TextView
+            android:id="@+id/trip_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/trip_end"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="10dp"
+            android:text="trip typ"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_below="@id/trip_type"
+            android:layout_margin="10dp"
+            android:alpha="0.4"
+            android:background="@color/black" />
+
+
+        <TextView
+            android:id="@+id/trip_note"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/divider"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="10dp"
+            android:text="some notes"
+            android:textSize="14sp" />
+
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

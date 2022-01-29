@@ -1,14 +1,10 @@
 package com.app.trip;
 
-import androidx.room.Dao;
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
-
 // Trip Model  values Data
-//Bogo
+//Pogo
 public class Trip {
 
-    int id;
+    String tripNotes;
     String tripName;
     String startPoint;
     String endPoint;
@@ -16,6 +12,43 @@ public class Trip {
     String date;
     String tripType;
 
+    private String setStartPLogntuide;
+    String setStartPattuide;
+
+    String setEndPLogntuide;
+    String setEndPattuide;
+
+    public String getSetStartPLogntuide() {
+        return setStartPLogntuide;
+    }
+
+    public void setSetStartPLogntuide(String setStartPLogntuide) {
+        this.setStartPLogntuide = setStartPLogntuide;
+    }
+
+    public String getSetStartPattuide() {
+        return setStartPattuide;
+    }
+
+    public void setSetStartPattuide(String setStartPattuide) {
+        this.setStartPattuide = setStartPattuide;
+    }
+
+    public String getSetEndPLogntuide() {
+        return setEndPLogntuide;
+    }
+
+    public void setSetEndPLogntuide(String setEndPLogntuide) {
+        this.setEndPLogntuide = setEndPLogntuide;
+    }
+
+    public String getSetEndPattuide() {
+        return setEndPattuide;
+    }
+
+    public void setSetEndPattuide(String setEndPattuide) {
+        this.setEndPattuide = setEndPattuide;
+    }
 
     public String getTripName() {
         return tripName;
@@ -25,12 +58,12 @@ public class Trip {
         this.tripName = tripName;
     }
 
-    public int getId() {
-        return id;
+    public String getTripNotes() {
+        return tripNotes;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setTripNotes(String tripNotes) {
+        this.tripNotes = tripNotes;
     }
 
     public String getTripType() {
