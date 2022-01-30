@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="mainColor">#EBB30C</color>
     <color name="btnnote">#F0BC1F</color>
+    <color name="note2">#6E5A3D</color>
+    <color name="note3">#6E5A3D</color>
 </resources>

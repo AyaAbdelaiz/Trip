@@ -24,30 +24,20 @@
             android:orientation="vertical"
             android:padding="20dp">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/edtTripName"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:errorEnabled="true">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                <EditText
+                  android:id="@+id/edtTripName"
+                  style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                   app:errorEnabled="true"
                     android:hint="@string/trip_name"
                     android:inputType="textPersonName"
                     android:textColor="@color/black" />
-            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/edtStartPoint1"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:errorEnabled="true">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edtStartPoint"
+
+           <EditText
+                   android:id="@+id/edtStartPoint"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/ic_location"
@@ -55,18 +45,12 @@
                     android:inputType="textPersonName"
                     android:textColor="#000000"
                     android:textColorHint="@color/black" />
-            </com.google.android.material.textfield.TextInputLayout>
 
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/edtEndPoint1"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:errorEnabled="true">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edtEndPoint"
+
+           <EditText
+                 android:id="@+id/edtEndPoint"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/ic_location"
@@ -74,7 +58,6 @@
                     android:hint="@string/end_point"
                     android:inputType="textPersonName"
                     android:textColorHint="@color/black" />
-            </com.google.android.material.textfield.TextInputLayout>
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -97,11 +80,12 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageView
+                <ImageButton
                     android:id="@+id/imageDate"
                     android:layout_width="89dp"
                     android:layout_height="69dp"
                     android:layout_marginStart="80dp"
+                    android:background="@color/mainColor"
                     app:layout_constraintBottom_toBottomOf="@+id/imageTime"
                     app:layout_constraintStart_toEndOf="@+id/imageTime"
                     app:layout_constraintTop_toTopOf="@+id/imageTime"
@@ -109,12 +93,13 @@
                     tools:ignore="VectorDrawableCompat" />
 
 
-                <ImageView
+                <ImageButton
                     android:id="@+id/imageTime"
                     android:layout_width="96dp"
                     android:layout_height="75dp"
                     android:layout_marginStart="50dp"
                     android:layout_marginTop="12dp"
+                    android:background="@color/mainColor"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView"
                     app:srcCompat="@drawable/ic_clock"

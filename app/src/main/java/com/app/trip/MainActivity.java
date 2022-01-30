@@ -5,22 +5,37 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
     FloatingActionButton myFab ;
+    private ViewModel viewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        viewModel= ViewModelProviders.of(this).get(ViewModel.class);
+        viewModel.getAllTRips().observe(this, new Observer<List<Trips>>() {
+            @Override
+            public void onChanged(List<Trips> trips) {
+                Toast.makeText(MainActivity.this
+                        ,"its database", Toast.LENGTH_LONG).show();
+            }
+        });
         final DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
         ImageView image = findViewById(R.id.imageMenu);
         image.setOnClickListener(new View.OnClickListener() {
